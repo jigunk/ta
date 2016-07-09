@@ -30,7 +30,18 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'password',
             // 'kd_progdi',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template'    => '{view}{update}{delete}',
+                'buttons' => [
+                     'view' => function ($url, $model) {     
+                                return Html::a('<span class="glyphicon glyphicon-book"></span>', $url, [
+                                        'title' => Yii::t('yii', 'Lihat Laporan'),
+                                ]); 
+                            }
+                ],     
+                'controller' => 'pelaporan'
+            ],
         ],
     ]); ?>
 </div>
