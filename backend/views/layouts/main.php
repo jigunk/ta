@@ -28,7 +28,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'BACKEND',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -36,21 +36,29 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Verifikasi Mahasiswa', 'url' => ['/mahasiswa/index']],
-        ['label' => 'Jadwal Ujian', 'url' => ['/ujian/index']],
-        ['label' => 'Pelaporan', 'url' => ['#']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems = [
+            ['label' => 'Verifikasi Mahasiswa', 'url' => ['/mahasiswa/index']],
+            ['label' => 'Jadwal Ujian', 'url' => ['/ujian/index']],
+            ['label' => 'Pelaporan', 'url' => ['/pelaporan/index']],
+            [
+                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                'url' => ['/site/logout'],
+                'linkOptions' => ['data-method' => 'post']
+            ],
+        ];
+
+        // $menuItems[] = '<li>'
+        //     . Html::beginForm(['/site/logout'], 'post')
+        //     . Html::submitButton(
+        //         'Logout (' . Yii::$app->user->identity->username . ')',
+        //         ['class' => 'btn btn-link']
+        //     )
+        //     . Html::endForm()
+        //     . '</li>';
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

@@ -33,7 +33,13 @@ $title = 'hehooo';
         <td> Nama Dosen </td>
         <td> &nbsp;&nbsp;&nbsp;: 
         </td>
-        <td> &nbsp;&nbsp; Gareng, Ph. D
+        <?php
+        $data = \common\models\Dosen::find()->where(['kd_dosen' => $foo])->asArray()->one();
+            // echo $rating['vehicle_rating'];
+            // var_dump($data);
+           
+        ?>
+        <td> &nbsp;&nbsp;<?=$data['nama']; ?>
        
         </td>
         </tr>
@@ -42,7 +48,7 @@ $title = 'hehooo';
         <td> Program Studi </td>
         <td> &nbsp;&nbsp;&nbsp;: </td>
         <td> &nbsp;&nbsp;
-            '.$data['nama'].'
+            -
         </td>
         </tr>
       </table>
@@ -65,7 +71,7 @@ $title = 'hehooo';
             $sql =  "select m.nim,m.nama,p.nama_progdi 
                     from tb_mahasiswa m
                     join progdi p on p.kd_progdi = m.progdi
-                    where pembimbing_1 = 67001 or pembimbing_2 = 67001;";
+                    where pembimbing_1 = ".$foo." or pembimbing_2 = ".$foo.";";
             $connection = \Yii::$app->db;
             $model = $connection->createCommand($sql);
             $users = $model->queryAll();
@@ -102,7 +108,7 @@ $title = 'hehooo';
             <?php
             $sql =  "select penguji_1, substr(nim,1,2)  as 'kode_progdi',count(substr(nim,1,2)) as 'jumlah'
                         from tb_ujian 
-                        where penguji_1 = 67506
+                        where penguji_1 = ".$foo."
                         group by substr(nim,1,2);";
             $connection = \Yii::$app->db;
             $model = $connection->createCommand($sql);
@@ -140,7 +146,7 @@ $title = 'hehooo';
 
         </div>
         <div class="col-sm-4">
-          Salatiga, 19 Maret 2013
+          Salatiga, <?php echo date("d M Y"); ?>
 
         </div>
     </div>

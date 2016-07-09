@@ -47,7 +47,7 @@ class Dosen extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'kd_dosen' => 'Kd Dosen',
+            'kd_dosen' => 'ID Dosen',
             'nama' => 'Nama',
             'username' => 'Username',
             'password' => 'Password',

@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Ujian */
+/* @var $model common\models\Dosen */
 
-$this->title = $model->nim;
-$this->params['breadcrumbs'][] = ['label' => 'Ujians', 'url' => ['index']];
+$this->title = $model->kd_dosen;
+$this->params['breadcrumbs'][] = ['label' => 'Dosens', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ujian-view">
+<div class="dosen-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->nim], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->nim], [
+        <?= Html::a('Update', ['update', 'id' => $model->kd_dosen], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->kd_dosen], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,16 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'nim',
-            'penguji_1',
-            'penguji_2',
-            'nilai',
-            'hari',
-            'tanggal',
-            'jam_mulai',
-            'jam_selesai',
-            'ruang',
-            'periode',
+            'kd_dosen',
+            'nama',
+            'username',
+            'password',
+            'kd_progdi',
         ],
     ]) ?>
 
